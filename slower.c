@@ -12,7 +12,7 @@ int main() {
     unsigned int a = 512;
     unsigned int b = 10;
     unsigned int c = 100;
-    unsigned int pow = power(2, 10);
-    unsigned int result = pow % c;
+    unsigned int pow = power(a, b);
+    unsigned int result = pow % c; // Im pretty sure this just like overflows so thats nice.
     printf("%d\n", result);
 }
