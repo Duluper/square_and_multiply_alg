@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 // a^b mod c
 
@@ -18,17 +19,9 @@ unsigned int count_bits_magnitude(unsigned int n) {
     return count;
 }
 
-unsigned int power(int a, int b) { // a^b
-    unsigned int result = 1;
-    for (int i = 0; i < b; i++) {
-        result *= a;
-    }
-    return result;
-}
-
 int main() {
-    unsigned int a = 512;
-    unsigned int b = 10;
+    unsigned int a = 3;
+    unsigned int b = 75;
     unsigned int c = 100;
     
     unsigned int b_bits = count_bits_magnitude(b);
@@ -42,7 +35,7 @@ int main() {
     for (int i = 0; i < b_bits; i++) {
         unsigned int current_bit = read_bit(b, i);
         if (current_bit != 0) {
-            unsigned int base2 = power(2, i);
+            unsigned int base2 = pow(2, i);
             base10_base2[base10_base2_index] = base2;
             base10_base2_index++;
             unsigned int new_size = base10_base2_index;
@@ -69,8 +62,8 @@ int main() {
     }
     for (int i = 0; i < arr_size - 1; i++) {
         unsigned int current_val = base10_base2[i];
-        unsigned int pow = power(a, current_val);
-        result *= pow;
+        unsigned int power = pow(a, current_val);
+        result *= power;
     }
     result %= c;
     printf("Result: %d\n", result);
